@@ -12,18 +12,19 @@ function ProjectForm({btnText}) {
 
     useEffect (() => {
         fetch("https//localhost:5000/categories", {
-            method:"GET",
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json'
-        }
+                'Content-Type': 'application/json',
+        },
     })  
-    .then((resp) => resp.json)
+    .then((resp) => resp.json())
     .then((data) => {
             setCategories(data)
         })
-    .catch((err) => console.log("ERR",err))
-    }, [])
+    .catch((err) => console.log(err))
 
+    }, [])
+    
     return (
         <form className={styles.form}>
             <Input 
@@ -39,7 +40,7 @@ function ProjectForm({btnText}) {
             name='budget' 
             placeholder='Insira o Orçamento total'
             />
-            <Select name='category_id' text='Selecione a categoria' options={categories}/> 
+            <Select name="category_id" text="Selecione a categoria" options={categories}/> 
             <SubmitButton text={btnText}/>
         </form>
     )
